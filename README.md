@@ -15,15 +15,16 @@
 ## 🚀 *การติดตั้งและใช้งาน*
 
 ### *Clone โปรเจกต์*
-```sh
+```bash
 git clone git@github.com:kisuk04/helpdesk-ticket-system.git
-
+```
 ### *ดาวน์โหลด โปรเจกต์*
 
 ไฟล์ .env และใส่ข้อมูลจากด้านล่าง
 # App
 APP_PORT=8080
 # Database
+```bash
 #พิมพ์คำสั่ง ipconfig เพื่อค้นหา IP address ของ IPv4
 DATABASE_HOST= ...
 DATABASE_PORT=5432
@@ -42,16 +43,24 @@ POSTGRES_PORT=5432
 PGADMIN_DEFAULT_EMAIL=samanya.kisuk4@gmail.com
 PGADMIN_DEFAULT_PASSWORD=password
 PGADMIN_PORT=5055
+```
 
 - กด save File จากนั้น Run Folder ด้วย Docker ใช้คำสั่ง
+```bash
 docker-compose build
 docker-compose up -d 
+```
 
 - สำหรับ PostgreSQL เปิด localhost:5050
 #FrontEnd
 - Run Server
+```bash
 npm start
+```
 - หากเกิดปัญหา error
+
+```bash
 npm install
 npm start
+```
 - สำหรับ React เปิด localhost:3000 
