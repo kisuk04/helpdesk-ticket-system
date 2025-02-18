@@ -1,0 +1,62 @@
+
+services:
+  backend:
+    build: ./backend
+    container_name: helpdesk_backend
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./backend/.env:/app/.env 
+    env_file:
+      - ./backend/.env
+    depends_on:
+      db:
+        condition: service_healthy  
+    restart: unless-stopped
+    networks:
+      - helpdesk_network
+
+  db:
+    image: postgres:15
+    container_name: helpdesk_postgres
+    environment:
+      POSTGRES_DB: helpdesk
+      POSTGRES_USER: helpdesk_user
+      POSTGRES_PASSWORD: 123456
+    volumes:
+      - helpdesk_postgres_data:/var/lib/postgresql/data
+      - ./backend/database/migrations/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    healthcheck: 
+      test: ["CMD-SHELL", "pg_isready -U helpdesk_user -d helpdesk"]
+      interval: 10s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - helpdesk_network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: helpdesk_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: samanya.kisuk4@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: password
+    ports:
+      - "5050:80"
+    depends_on:
+      db:
+        condition: service_healthy
+    volumes:
+      - helpdesk_pgadmin_data:/var/lib/pgadmin 
+    restart: unless-stopped
+    networks:
+      - helpdesk_network
+
+volumes:
+  helpdesk_postgres_data:
+  helpdesk_pgadmin_data:
+
+networks:
+  helpdesk_network:
+    driver: bridge
