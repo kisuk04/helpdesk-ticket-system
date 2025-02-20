@@ -3,7 +3,7 @@ import { Table, Form, Container, Modal, Button } from "react-bootstrap";
 import { useTable, useSortBy, useGlobalFilter } from "react-table";
 import { FaSort, FaSortUp, FaSortDown, FaEdit } from "react-icons/fa";
 import axios from "axios";
-import ItSideBar from "../components/ItSidebar";
+import ItSideBar from "../components/ItSideBar";
 
 const API_URL = "http://localhost:8080/api/tickets";
 const formatDate = (isoString) => new Date(isoString).toLocaleString();
