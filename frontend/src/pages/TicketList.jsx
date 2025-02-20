@@ -3,7 +3,7 @@ import { Container, Form, Table, Badge, Button, Modal } from "react-bootstrap";
 import { useTable, useSortBy, useGlobalFilter } from "react-table";
 import { FaSort, FaSortUp, FaSortDown, FaEdit } from "react-icons/fa";
 import axios from "axios";
-import Sidebar from "../components/Sidebar";
+import Sidebar from "../components/SideBar";
 
 const API_URL = "http://localhost:8080/api/tickets";
 
