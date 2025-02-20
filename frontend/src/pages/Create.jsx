@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Container, Form, Button, Card, Alert } from "react-bootstrap";
 import axios from "axios";
 import "../css/Create.css";
-import Sidebar from "../components/Sidebar";
+import Sidebar from "../components/SideBar";
 
 
 const API_URL = "http://localhost:8080/api/tickets";
